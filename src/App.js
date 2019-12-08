@@ -12,19 +12,18 @@ function App () {
   const [vid, setVid] = useState(testURL)
   const [imgPrev, setimgPrev] = useState(placeholder);
   const [widthProg, setWidthProg] = useState('1%');
+  const [settings, setSettings] = useState({})
 
   const handleFile = (e) => {
     //console.log(e.target.files[0]);
     setVid(window.URL.createObjectURL(e.target.files[0]));
   }
 
-  const convertGif = () => {
+  const convertGif = () => {    
     gifshot.createGIF({
-      gifWidth: 400,
+      ...settings,
       video: vid,
       interval: 0.1,
-      numFrames: 20,
-      frameDuration: 1,
       fontWeight: 'normal',
       fontSize: '16px',
       fontFamily: 'sans-serif',
@@ -49,6 +48,10 @@ function App () {
     setWidthProg((captureProgress * 100) + '%');
   }
 
+  const getSettings = (userSettings) => {
+    setSettings(userSettings);
+  }
+
   return (
     <div className="container py-5">
 
@@ -59,7 +62,7 @@ function App () {
 
       <InputFile handleFile={handleFile} />
 
-      <ConvertSettings />
+      <ConvertSettings getSettings={getSettings} />
 
       <button onClick={convertGif} className="btn btn-primary w-100 btn-lg mb-3">convert</button>
 

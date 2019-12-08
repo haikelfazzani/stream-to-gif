@@ -2,7 +2,7 @@ img, video {
   width: 100%;
 }
 
-.btn {
+label, .btn {
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;

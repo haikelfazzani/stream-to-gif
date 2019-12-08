@@ -1,22 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import InputNumber from '../components/InputNumber';
 
-function ConvertSettings () {
+function ConvertSettings ({ getSettings }) {
 
-  const [settings, setSettings] = useState({});
+  const [settings, setSettings] = useState({
+    gifWidth: 400,
+    gifHeight: 200,
+    numFrames: 50,
+    frameDuration: 1
+  });
+
+  useEffect(() => {
+    getSettings(settings)
+  }, [settings, setSettings])
 
   return (
     <div className="row mb-3">
-      <div className="col-md-4">
-        <input type="number" className="form-control" placeholder="Enter gif image width" />
-      </div>
-
-      <div className="col-md-4">
-        <input type="number" className="form-control" placeholder="Enter number of frames" />
-      </div>
-
-      <div className="col-md-4">
-        <input type="number" className="form-control" placeholder="Enter frame duration" />
-      </div>
+      <InputNumber setSettings={setSettings} defaultValue="400" val='gifWidth' label="Gif width" />
+      <InputNumber setSettings={setSettings} defaultValue="200" val='gifHeight' label="Gif height" />
+      <InputNumber setSettings={setSettings} defaultValue="20" val='numFrames' label="number of Frames" />
+      <InputNumber setSettings={setSettings} defaultValue="1" val='frameDuration' label="frame Duration" />
     </div>
   )
 }
