@@ -1,31 +1,31 @@
 import React from 'react'
 
-function InputNumber ({ setSettings, val, label, defaultValue }) {
+function InputNumber ({ settings, setSettings, val, label, defaultValue }) {
 
   const handleChange = (e) => {
     switch (val) {
       case 'numFrames':
-        setSettings({ numFrames: e.target.value })
+        setSettings({ ...settings, numFrames: e.target.value })
         break;
 
       case 'frameDuration':
-        setSettings({ frameDuration: e.target.value })
+        setSettings({ ...settings, frameDuration: e.target.value })
         break;
 
       case 'sampleInterval':
-        setSettings({ sampleInterval: e.target.value })
+        setSettings({ ...settings, sampleInterval: e.target.value })
         break;
 
       case 'interval':
-        setSettings({ interval: e.target.value })
+        setSettings({ ...settings, interval: e.target.value })
         break;
 
       case 'gifHeight':
-        setSettings({ gifHeight: e.target.value })
+        setSettings({ ...settings, gifHeight: e.target.value })
         break;
 
       case 'gifWidth':
-        setSettings({ gifWidth: e.target.value })
+        setSettings({ ...settings, gifWidth: e.target.value })
         break;
 
       default:        

@@ -1,4 +1,4 @@
-import React ,{useState } from 'react';
+import React, { useState } from 'react';
 import gifshot from 'gifshot'
 import InputFile from '../components/InputFile';
 import ProgressBar from '../components/ProgressBar';
@@ -20,6 +20,8 @@ export default function StreamGif () {
   }
 
   const convertGif = () => {
+    console.log(settings);
+    
     gifshot.createGIF({
       ...settings,
       video: vid,
@@ -73,13 +75,16 @@ export default function StreamGif () {
 
       <div className="row mb-3">
         <div className="col-md-6">
-          <video src={vid} controls></video>
+          <video src={vid} className="img-fluid" controls></video>
         </div>
 
         <div className="col-md-6">
-          <img src={imgPrev} alt="placeholder" />
+          <img src={imgPrev} alt="placeholder" className="img-fluid"
+            width={settings.gifWidth ? settings.gifWidth : '400'}
+            height={settings.gifHeight ? settings.gifHeight : '400'}
+          />
         </div>
-      </div>      
+      </div>
 
     </div>
   )

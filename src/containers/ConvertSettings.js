@@ -18,12 +18,44 @@ function ConvertSettings ({ getSettings }) {
 
   return (
     <div className="row mb-3">
-      <InputNumber setSettings={setSettings} defaultValue="400" val='gifWidth' label="Gif width" />
-      <InputNumber setSettings={setSettings} defaultValue="180" val='gifHeight' label="Gif height" />
-      <InputNumber setSettings={setSettings} defaultValue="20" val='numFrames' label="number of Frames" />
-      <InputNumber setSettings={setSettings} defaultValue="1" val='frameDuration' label="frame Duration" />
-      <InputNumber setSettings={setSettings} defaultValue="10" val='sampleInterval' label="sample interval" />
-      <InputNumber setSettings={setSettings} defaultValue="0.1" val='interval' label="interval" />
+
+      <InputNumber
+        settings={settings}
+        setSettings={setSettings}
+        defaultValue="400"
+        val='gifWidth'
+        label="Gif width"
+      />
+
+
+      <InputNumber
+        settings={settings}
+        setSettings={setSettings}
+        defaultValue="180"
+        val='gifHeight'
+        label="Gif height"
+      />
+
+
+      <InputNumber
+        settings={settings}
+        setSettings={setSettings}
+        defaultValue="20"
+        val='numFrames'
+        label="number of Frames"
+      />
+
+
+      <InputNumber settings={settings}
+        setSettings={setSettings} defaultValue="1" val='frameDuration' label="frame Duration" />
+
+
+      <InputNumber settings={settings}
+        setSettings={setSettings} defaultValue="10" val='sampleInterval' label="sample interval" />
+
+
+      <InputNumber settings={settings}
+        setSettings={setSettings} defaultValue="0.1" val='interval' label="interval" />
     </div>
   )
 }
