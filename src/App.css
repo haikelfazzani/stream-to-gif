@@ -8,6 +8,13 @@ label, .btn {
   text-transform: uppercase;
 }
 
+pre {
+  padding: 20px;
+  background-color: #252525;
+  border-radius: 5px;
+  color: #cacaca !important;
+}
+
 .myProgress {
   width: 100%;
   background-color: grey;

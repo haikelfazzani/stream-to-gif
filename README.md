@@ -4,4 +4,8 @@
 - [ ] webcam record to gif
 - [ ] take snap shot
 
-- [ ] settings
+- [x] settings
+- [ ] more settings
+
+## Credit
+- [gifshot](https://github.com/yahoo/gifshot#api-methods)
