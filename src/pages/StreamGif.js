@@ -19,9 +19,7 @@ export default function StreamGif () {
     setVid(window.URL.createObjectURL(e.target.files[0]));
   }
 
-  const convertGif = () => {
-    console.log(settings);
-    
+  const convertGif = () => {   
     gifshot.createGIF({
       ...settings,
       video: vid,
@@ -80,8 +78,8 @@ export default function StreamGif () {
 
         <div className="col-md-6">
           <img src={imgPrev} alt="placeholder" className="img-fluid"
-            width={settings.gifWidth ? settings.gifWidth : '400'}
-            height={settings.gifHeight ? settings.gifHeight : '400'}
+            width={settings.gifWidth}
+            height={settings.gifHeight}
           />
         </div>
       </div>
