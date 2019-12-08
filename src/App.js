@@ -6,6 +6,16 @@ import ProgressBar from './components/ProgressBar';
 import placeholder from './img/1.png'
 import ConvertSettings from './containers/ConvertSettings';
 
+const notes = `
+interval : The amount of time (in seconds) to wait between each frame capture
+frameDuration : The amount of time (10 = 1s) to stay on each frame
+sampleInterval : how many pixels to skip when creating the palette. Default is 10. Less is better, but slower.
+By adjusting the sample interval, you can either produce extremely high-quality images slowly, or produce good images in reasonable times.
+With a sampleInterval of 1, the entire image is used in the learning phase, while with an interval of 10,
+a pseudo-random subset of 1/10 of the pixels are used in the learning phase. A sampling factor of 10 gives a
+substantial speed-up, with a small quality penalty.
+`;
+
 const testURL = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
 
 function App () {
@@ -19,20 +29,18 @@ function App () {
     setVid(window.URL.createObjectURL(e.target.files[0]));
   }
 
-  const convertGif = () => {    
+  const convertGif = () => {
     gifshot.createGIF({
       ...settings,
       video: vid,
-      interval: 0.1,
       fontWeight: 'normal',
       fontSize: '16px',
       fontFamily: 'sans-serif',
       fontColor: '#ffffff',
       textAlign: 'center',
       textBaseline: 'bottom',
-      sampleInterval: 10,
       numWorkers: 2,
-      progressCallback
+      progressCallback, completeCallback
     }, function (obj) {
       if (!obj.error) {
         setimgPrev(obj.image)
@@ -46,6 +54,10 @@ function App () {
 
   const progressCallback = (captureProgress) => {
     setWidthProg((captureProgress * 100) + '%');
+  }
+
+  const completeCallback = () => {
+    console.log('completed');
   }
 
   const getSettings = (userSettings) => {
@@ -69,7 +81,7 @@ function App () {
       <ProgressBar widthProg={widthProg} />
 
 
-      <div className="row">
+      <div className="row mb-3">
         <div className="col-md-6">
           <video src={vid} controls></video>
         </div>
@@ -78,6 +90,8 @@ function App () {
           <img src={imgPrev} alt="placeholder" />
         </div>
       </div>
+
+      <pre className="mb-3"><code>{notes}</code></pre>
 
     </div>
   );

@@ -12,24 +12,35 @@ function InputNumber ({ setSettings, val, label, defaultValue }) {
         setSettings({ frameDuration: e.target.value })
         break;
 
+      case 'sampleInterval':
+        setSettings({ sampleInterval: e.target.value })
+        break;
+
+      case 'interval':
+        setSettings({ interval: e.target.value })
+        break;
+
       case 'gifHeight':
         setSettings({ gifHeight: e.target.value })
         break;
 
-      default:
+      case 'gifWidth':
         setSettings({ gifWidth: e.target.value })
+        break;
+
+      default:        
         break;
     }
   }
 
   return (
-    <div className="col-md-3">
+    <div className="col-md-2">
 
       <label htmlFor={label}>{label}</label>
 
       <input type="number"
         onChange={handleChange}
-        className="form-control" placeholder="Enter gif image width"
+        className="form-control w-100" placeholder="Enter gif image width"
         defaultValue={defaultValue}
       />
 
