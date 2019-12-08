@@ -1,9 +1,20 @@
-video {
-  width: 400px;
+img, video {
+  width: 100%;
 }
 
 .btn {
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
+}
+
+.myProgress {
+  width: 100%;
+  background-color: grey;
+}
+
+.myBar {
+  width: 1%;
+  height: 30px;
+  background-color: green;
 }

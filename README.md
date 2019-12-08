@@ -3,3 +3,5 @@
 - [ ] images to gif
 - [ ] webcam record to gif
 - [ ] take snap shot
+
+- [ ] settings
