@@ -75,13 +75,13 @@ export default function StreamGif () {
           <video src={vid} className="img-fluid" controls></video>
         </div>
 
-        <div className="col-md-6 dash-border">
+        <div className="col-md-6 mb-3">
 
-          <div className="w-100 h-100 d-flex justify-content-center align-items-center mb-3">
+          <div className="h-100 dash-border d-flex justify-content-center align-items-center mb-3">
             {imgPrev ? <img src={imgPrev} alt="placeholder" className="img-fluid"
               width={settings.gifWidth}
               height={settings.gifHeight}
-            /> : <h3 className="text-muted">Your gif output will be here</h3>}
+            /> : <h3 className="text-muted">Gif output will be here</h3>}
             
           </div>
 
