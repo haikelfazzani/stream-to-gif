@@ -1,12 +1,13 @@
 import React from 'react';
-import '../styles/progress.css'
 
 function ProgressBar ({ widthProg }) {
 
-
   return (
-    <div className="myProgress mb-3">
-      <div className="myBar" style={{ width: widthProg }}></div>
+    <div className="progress mb-3" style={{"height": "25px"}}>
+      <div className="progress-bar bg-warning" role="progressbar"
+        aria-valuenow="0" aria-valuemin={widthProg} style={{ "width": widthProg }}
+        aria-valuemax="100">{parseInt(widthProg) + "%"}
+      </div>
     </div>
   )
 }

@@ -11,7 +11,7 @@ export default function StreamGif () {
 
   const [vid, setVid] = useState(testURL)
   const [imgPrev, setimgPrev] = useState(placeholder);
-  const [widthProg, setWidthProg] = useState('1%');
+  const [widthProg, setWidthProg] = useState('0%');
   const [settings, setSettings] = useState({})
 
   const handleFile = (e) => {
@@ -19,7 +19,7 @@ export default function StreamGif () {
     setVid(window.URL.createObjectURL(e.target.files[0]));
   }
 
-  const convertGif = () => {   
+  const convertGif = () => {
     gifshot.createGIF({
       ...settings,
       video: vid,
@@ -66,7 +66,7 @@ export default function StreamGif () {
 
       <ConvertSettings getSettings={getSettings} />
 
-      <button onClick={convertGif} className="btn btn-primary w-100 btn-lg mb-3">convert</button>
+      <button onClick={convertGif} className="btn btn-primary w-100 btn-lg mb-3">convert to gif</button>
 
       <ProgressBar widthProg={widthProg} />
 
@@ -77,10 +77,14 @@ export default function StreamGif () {
         </div>
 
         <div className="col-md-6">
-          <img src={imgPrev} alt="placeholder" className="img-fluid"
+          <img src={imgPrev} alt="placeholder" className="img-fluid mb-3"
             width={settings.gifWidth}
             height={settings.gifHeight}
           />
+
+          {widthProg === '100%' && 
+            <a href={imgPrev} className="btn btn-primary btn-lg w-50" download>Download</a>}
+
         </div>
       </div>
 
