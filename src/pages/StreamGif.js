@@ -86,7 +86,7 @@ export default function StreamGif () {
           </div>
 
           {widthProg === '100%' &&
-            <a href={imgPrev} className="btn btn-primary btn-lg w-100" download>Download</a>}
+            <a href={imgPrev} className="btn btn-success btn-lg w-100" download>Download</a>}
 
         </div>
       </div>
