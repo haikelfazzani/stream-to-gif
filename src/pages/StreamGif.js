@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import gifshot from 'gifshot'
 import InputFile from '../components/InputFile';
 import ProgressBar from '../components/ProgressBar';
-import placeholder from '../img/1.png'
 import ConvertSettings from '../containers/ConvertSettings';
 
 const testURL = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
@@ -10,7 +9,7 @@ const testURL = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sampl
 export default function StreamGif () {
 
   const [vid, setVid] = useState(testURL)
-  const [imgPrev, setimgPrev] = useState(placeholder);
+  const [imgPrev, setimgPrev] = useState("");
   const [widthProg, setWidthProg] = useState('0%');
   const [settings, setSettings] = useState({})
 
@@ -76,14 +75,18 @@ export default function StreamGif () {
           <video src={vid} className="img-fluid" controls></video>
         </div>
 
-        <div className="col-md-6">
-          <img src={imgPrev} alt="placeholder" className="img-fluid mb-3"
-            width={settings.gifWidth}
-            height={settings.gifHeight}
-          />
+        <div className="col-md-6 dash-border">
 
-          {widthProg === '100%' && 
-            <a href={imgPrev} className="btn btn-primary btn-lg w-50" download>Download</a>}
+          <div className="w-100 h-100 d-flex justify-content-center align-items-center mb-3">
+            {imgPrev ? <img src={imgPrev} alt="placeholder" className="img-fluid"
+              width={settings.gifWidth}
+              height={settings.gifHeight}
+            /> : <h3 className="text-muted">Your gif output will be here</h3>}
+            
+          </div>
+
+          {widthProg === '100%' &&
+            <a href={imgPrev} className="btn btn-primary btn-lg w-100" download>Download</a>}
 
         </div>
       </div>
