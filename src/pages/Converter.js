@@ -7,7 +7,7 @@ import Doc from '../components/Doc';
 
 const testURL = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
 
-export default function StreamGif () {
+export default function Converter () {
 
   const [vid, setVid] = useState(testURL)
   const [imgPrev, setimgPrev] = useState("");
@@ -58,7 +58,7 @@ export default function StreamGif () {
     <div className="container py-5">
 
       <div className="form-group mb-3">
-        <input type="text" className="form-control" placeholder="Enter url" onChange={urlChange} />
+        <input type="text" className="form-control" placeholder="Enter an url or drop file.." onChange={urlChange} />
         <small className="form-text text-muted">Example: {testURL}</small>
       </div>
 
