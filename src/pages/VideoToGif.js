@@ -70,7 +70,7 @@ export default function VideoToGif () {
         <ConvertSettings getSettings={getSettings} />
 
         <button onClick={convertGif} className="btn btn-primary w-100 btn-lg mb-3">
-          <i className="fas fa-cogs"></i> convert to gif
+          <i className="fas fa-cogs"></i> convert video to gif
         </button>
 
         <ProgressBar widthProg={widthProg} />

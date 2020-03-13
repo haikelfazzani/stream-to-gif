@@ -13,12 +13,6 @@ body {
 .navbar-brand {font-family: 'Sriracha'; font-size: 16px !important;}
 .nav-link {font-size: 12px !important;}
 
-section {
-  padding: 20px;
-  color: #ffffff;
-  background-image: linear-gradient(to bottom right,#5dccff,#3d5afe);;
-}
-
 video {
   width: 100%;
 }
