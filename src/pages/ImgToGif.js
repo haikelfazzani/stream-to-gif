@@ -6,8 +6,6 @@ import ConvertSettings from '../containers/ConvertSettings';
 import Doc from '../components/Doc';
 import Image from '../components/Image';
 
-const testURL = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
-
 export default function Converter () {
 
   const [userImages, setUserImages] = useState([
@@ -20,14 +18,14 @@ export default function Converter () {
   const [settings, setSettings] = useState({})
 
   const handleFile = (e) => {
-    console.log(Object.values(e.target.files));
-
     let files = Object.values(e.target.files).map(file => window.URL.createObjectURL(file));
-
     setUserImages(files);
   }
 
   const convertGif = () => {
+
+    setimgPrev("");
+
     gifshot.createGIF({
       ...settings,
       images: userImages,
@@ -41,7 +39,7 @@ export default function Converter () {
       progressCallback, completeCallback
     }, function (obj) {
       if (!obj.error) {
-        setimgPrev(obj.image)
+        setimgPrev(obj.image); 
       }
     });
   }
@@ -93,7 +91,7 @@ export default function Converter () {
           </div>
 
           {widthProg === '100%' &&
-            <a href={imgPrev} className="btn btn-success btn-lg w-100" download>
+            <a href={imgPrev} className="btn btn-success btn-lg" download>
               <i className="fas fa-download"></i> Download
             </a>}
 

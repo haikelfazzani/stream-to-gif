@@ -15,11 +15,12 @@ export default function VideoToGif () {
   const [settings, setSettings] = useState({})
 
   const handleFile = (e) => {
-    //console.log(e.target.files[0]);
     setVid(window.URL.createObjectURL(e.target.files[0]));
   }
 
   const convertGif = () => {
+    setimgPrev('');
+
     gifshot.createGIF({
       ...settings,
       video: vid,
@@ -32,9 +33,7 @@ export default function VideoToGif () {
       numWorkers: 2,
       progressCallback, completeCallback
     }, function (obj) {
-      if (!obj.error) {
-        setimgPrev(obj.image)
-      }
+      setimgPrev(!obj.error ? obj.image : '');
     });
   }
 
@@ -44,6 +43,9 @@ export default function VideoToGif () {
 
   const progressCallback = (captureProgress) => {
     setWidthProg((captureProgress * 100) + '%');
+    if (captureProgress === 1) {
+      setTimeout(() => { setWidthProg(200 + '%'); }, 3000);
+    }
   }
 
   const completeCallback = () => {
@@ -90,8 +92,8 @@ export default function VideoToGif () {
 
           </div>
 
-          {widthProg === '100%' &&
-            <a href={imgPrev} className="btn btn-success btn-lg w-100" download>
+          {widthProg === '200%' &&
+            <a href={imgPrev} className="btn btn-success btn-lg" download>
               <i className="fas fa-download"></i> Download
             </a>}
 
