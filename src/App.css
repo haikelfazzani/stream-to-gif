@@ -28,7 +28,7 @@ label,
 .dash-border {
   border-width: 2px;
   border-radius: 2px;
-  border-color: #eeeeee;
+  border-color: #c4c4c4;
   border-style: dashed;
 }
 
@@ -47,8 +47,9 @@ footer {
   }
 }
 
+.p-20{padding: 20px;}
 .box-shad {box-shadow: 0 4px 8px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);}
-
+.fs-12 {font-size: 12px !important;}
 /* width */
 ::-webkit-scrollbar {
   width: 7px;

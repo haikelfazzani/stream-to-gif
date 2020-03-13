@@ -4,25 +4,33 @@ import InputFile from '../components/InputFile';
 import ProgressBar from '../components/ProgressBar';
 import ConvertSettings from '../containers/ConvertSettings';
 import Doc from '../components/Doc';
+import Image from '../components/Image';
 
 const testURL = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
 
 export default function Converter () {
 
-  const [vid, setVid] = useState(testURL)
+  const [userImages, setUserImages] = useState([
+    'https://i.ibb.co/tMr7cNC/py1.jpg',
+    'https://i.ibb.co/vYZq5zb/code.jpg',
+    'https://i.ibb.co/MkBGVjw/challenge.png'
+  ]);
   const [imgPrev, setimgPrev] = useState("");
   const [widthProg, setWidthProg] = useState('0%');
   const [settings, setSettings] = useState({})
 
   const handleFile = (e) => {
-    //console.log(e.target.files[0]);
-    setVid(window.URL.createObjectURL(e.target.files[0]));
+    console.log(Object.values(e.target.files));
+
+    let files = Object.values(e.target.files).map(file => window.URL.createObjectURL(file));
+
+    setUserImages(files);
   }
 
   const convertGif = () => {
     gifshot.createGIF({
       ...settings,
-      video: vid,
+      images: userImages,
       fontWeight: 'normal',
       fontSize: '16px',
       fontFamily: 'sans-serif',
@@ -36,10 +44,6 @@ export default function Converter () {
         setimgPrev(obj.image)
       }
     });
-  }
-
-  const urlChange = (e) => {
-    setVid(e.target.value);
   }
 
   const progressCallback = (captureProgress) => {
@@ -57,26 +61,25 @@ export default function Converter () {
   return (
     <div className="container py-5">
 
-      <div className="form-group mb-3">
-        <input type="text" className="form-control" placeholder="Enter an url or drop file.." onChange={urlChange} />
-        <small className="form-text text-muted">Example: {testURL}</small>
+      <InputFile handleFile={handleFile} multiple="multiple" />
+
+      <div className="w-100 box-shad p-20 mb-5">
+        <ConvertSettings getSettings={getSettings} />
+
+        <button onClick={convertGif} className="btn btn-primary w-100 btn-lg mb-3">
+          <i className="fas fa-cogs"></i> convert to gif
+        </button>
+
+        <ProgressBar widthProg={widthProg} />
       </div>
-
-      <InputFile handleFile={handleFile} />
-
-      <ConvertSettings getSettings={getSettings} />
-
-      <button onClick={convertGif} className="btn btn-primary w-100 btn-lg mb-3">
-      <i className="fas fa-cogs"></i> convert to gif
-      </button>
-
-      <ProgressBar widthProg={widthProg} />
-
 
       <div className="row mb-3">
         <div className="col-md-6">
-
-          <video src={vid} className="img-fluid" controls></video>
+          <div className="row">
+            {userImages && userImages.map((img, i) => <div key={'img' + i} className="col-md-4">
+              <Image src={img} />
+            </div>)}
+          </div>
         </div>
 
         <div className="col-md-6 mb-3">
@@ -96,8 +99,6 @@ export default function Converter () {
 
         </div>
       </div>
-
-
 
       <Doc />
     </div>

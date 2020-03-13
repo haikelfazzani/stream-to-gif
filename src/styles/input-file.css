@@ -6,10 +6,9 @@
   padding: 25px 20px;
   border-width: 2px;
   border-radius: 2px;
-  border-color: #eeeeee;
+  border-color: #c4c4c4;
   border-style: dashed;
-  background-color: #323e4a;
-  color: #bdbdbd;
+  background-color: #f1f1f1;
   outline: none;
   transition: border .24s ease-in-out;
   position: relative;

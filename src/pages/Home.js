@@ -29,8 +29,8 @@ export default function Home () {
     <div className="row py-5 text-center">
       <div className="col-md-4">
         <h2><i className="fas fa-expand"></i></h2>
-        <h3>With and height</h3>
-        <p className="m-0">You can specify the with and the height of the gif image output.</p>
+        <h3>Resize</h3>
+        <p className="m-0">You can specify the width and the height of the gif image output.</p>
       </div>
 
       <div className="col-md-4">
@@ -41,8 +41,8 @@ export default function Home () {
 
       <div className="col-md-4">
         <h2><i className="fas fa-window-restore"></i></h2>
-        <h3>Gif lenght</h3>
-        <p className="m-0">You can choose the lenght of the gif image by changing the number of frames.</p>
+        <h3>Choose format</h3>
+        <p className="m-0">You can choose format images or video to be converted into gif image.</p>
       </div>
 
     </div>

@@ -22,7 +22,8 @@ function NavBar () {
 
         <ul className="navbar-nav">
           <li className="nav-item"><Link className="nav-link" to="/"><i className="fas fa-home"></i> home</Link></li>
-          <li className="nav-item"><Link className="nav-link" to="/converter">converter</Link></li>
+          <li className="nav-item"><Link className="nav-link" to="/videos">video converter</Link></li>
+          <li className="nav-item"><Link className="nav-link" to="/images">images converter</Link></li>
         </ul>
 
       </div>

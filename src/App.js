@@ -1,10 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import './App.css';
-import Converter from './pages/Converter';
+import VideoToGif from './pages/VideoToGif';
 import NavBar from './components/NavBar';
 import Home from './pages/Home';
 import Footer from './components/Footer';
+import ImgToGif from './pages/ImgToGif';
 
 function App () {
 
@@ -15,7 +16,8 @@ function App () {
 
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/converter" component={Converter} />
+        <Route path="/videos" component={VideoToGif} />
+        <Route path="/images" component={ImgToGif} />
         <Redirect to="/" />
       </Switch>
 
