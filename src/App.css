@@ -1,11 +1,17 @@
 body {
-  color: #ffffff;
-  background-color: #343a40;
+  font-family: 'Raleway';
 }
+
+#root {width: 100%; height: 100%;}
 
 .navbar {
   padding: 15px 130px;
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #f1f1f1;
 }
+
+.navbar-brand {font-family: 'Sriracha'; font-size: 16px !important;}
+.nav-link {font-size: 12px !important;}
 
 video {
   width: 100%;
@@ -13,7 +19,7 @@ video {
 
 label,
 .btn,
-.navbar-brand {
+.navbar-brand,.nav-link {
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
@@ -26,8 +32,39 @@ label,
   border-style: dashed;
 }
 
+footer {
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  margin-top: 50px;
+  border-top: 1px solid #f1f1f1;
+  text-transform: uppercase;
+}
+
 @media screen and (max-width: 600px) {
   .navbar {
     padding: 20px;
   }
+}
+
+.box-shad {box-shadow: 0 4px 8px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);}
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #474141;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #535151;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #3273dc;
 }

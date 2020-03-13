@@ -1,8 +1,7 @@
 import React from 'react';
 import '../styles/doc.css'
 
-const notes = `
-interval : The amount of time (in seconds) to wait between each frame capture
+const notes = `interval : The amount of time (in seconds) to wait between each frame capture
 
 number of Frames: The number of frames to use to create the animated GIF
 Note: Each frame is captured every 100 milliseconds of a video and every ms for existing images
@@ -19,6 +18,6 @@ substantial speed-up, with a small quality penalty.
 
 export default function Doc() {
   return (
-    <div className="container py-5"><pre className="mb-3"><code>{notes}</code></pre></div>
+    <div className="py-5 mt-5"><pre className="box-shad mb-3"><code>{notes}</code></pre></div>
   )
 }

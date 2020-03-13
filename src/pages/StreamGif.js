@@ -3,6 +3,7 @@ import gifshot from 'gifshot'
 import InputFile from '../components/InputFile';
 import ProgressBar from '../components/ProgressBar';
 import ConvertSettings from '../containers/ConvertSettings';
+import Doc from '../components/Doc';
 
 const testURL = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
 
@@ -65,13 +66,16 @@ export default function StreamGif () {
 
       <ConvertSettings getSettings={getSettings} />
 
-      <button onClick={convertGif} className="btn btn-primary w-100 btn-lg mb-3">convert to gif</button>
+      <button onClick={convertGif} className="btn btn-primary w-100 btn-lg mb-3">
+      <i className="fas fa-cogs"></i> convert to gif
+      </button>
 
       <ProgressBar widthProg={widthProg} />
 
 
       <div className="row mb-3">
         <div className="col-md-6">
+
           <video src={vid} className="img-fluid" controls></video>
         </div>
 
@@ -82,15 +86,20 @@ export default function StreamGif () {
               width={settings.gifWidth}
               height={settings.gifHeight}
             /> : <h3 className="text-muted">Gif output will be here</h3>}
-            
+
           </div>
 
           {widthProg === '100%' &&
-            <a href={imgPrev} className="btn btn-success btn-lg w-100" download>Download</a>}
+            <a href={imgPrev} className="btn btn-success btn-lg w-100" download>
+              <i className="fas fa-download"></i> Download
+            </a>}
 
         </div>
       </div>
 
+
+
+      <Doc />
     </div>
   )
 }

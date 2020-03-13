@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Footer() {
+export default function Footer() {
   return (
-    <div>
-      
-    </div>
+    <footer className="container py-3">
+      <a href="https://github.com/haikelfazzani/stream-to-gif" target="_blank" rel="noopener noreferrer">
+        © 2020 Copyright Streamgif
+      </a>
+    </footer>
   )
 }
-
-export default Footer
