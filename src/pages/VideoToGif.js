@@ -74,7 +74,7 @@ export default function VideoToGif () {
         <ProgressBar widthProg={widthProg} />
       </div>
 
-      <div className="row py-3">
+      <div className="row mb-5">
         <div className="col-md-6">
 
           <video src={vid} className="img-fluid" controls></video>
@@ -97,8 +97,6 @@ export default function VideoToGif () {
 
         </div>
       </div>
-
-
 
       <Doc />
     </div>

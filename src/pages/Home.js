@@ -34,7 +34,7 @@ export default function Home () {
       </div>
 
       <div className="col-md-4">
-        <h2><i className="fas fa-tachometer-alt"></i></h2>
+        <h2><i className="fas fa-images"></i></h2>
         <h3>Choose quality</h3>
         <p className="m-0">You can choose the quality of the gif image by changing the frame duration, sample interval and interval.</p>
       </div>
@@ -42,7 +42,7 @@ export default function Home () {
       <div className="col-md-4">
         <h2><i className="fas fa-window-restore"></i></h2>
         <h3>Choose format</h3>
-        <p className="m-0">You can choose format images or video to be converted into gif image.</p>
+        <p className="m-0">Convert images or video to gif image.</p>
       </div>
 
     </div>

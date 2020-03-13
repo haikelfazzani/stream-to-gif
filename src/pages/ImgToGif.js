@@ -73,7 +73,7 @@ export default function Converter () {
         <ProgressBar widthProg={widthProg} />
       </div>
 
-      <div className="row mb-3">
+      <div className="row mb-5">
         <div className="col-md-6">
           <div className="row">
             {userImages && userImages.map((img, i) => <div key={'img' + i} className="col-md-4">
