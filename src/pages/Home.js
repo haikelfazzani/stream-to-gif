@@ -15,7 +15,7 @@ export default function Home () {
 
             <h4>Speed, meet simplicity and open source</h4>
             <p className="mt-0">Generate a beautiful gif images with one click.</p>
-            <Link className="btn btn-primary btn-lg w-50" to="/videos">
+            <Link className="btn btn-primary btn-lg w-50" to="/videos-converter">
               <span className="mr-2">Get started now</span> <i className="fas fa-play"></i>
             </Link>
           </div>

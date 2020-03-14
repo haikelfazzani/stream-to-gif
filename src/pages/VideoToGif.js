@@ -48,7 +48,10 @@ export default function VideoToGif () {
   const urlChange = (e) => {
     let vidFile = e.target.value.trim();
     let extension = vidFile.split('.').pop().toLowerCase();
-    if (vidTypes.includes(extension)) { setVid(vidFile); }
+    if (vidTypes.includes(extension)) { 
+      setVid(vidFile); 
+      setDisableBtnConvert(false);
+    }
     else { setDisableBtnConvert(true); }
   }
 
