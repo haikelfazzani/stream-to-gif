@@ -39,7 +39,7 @@ export default function Converter () {
       progressCallback, completeCallback
     }, function (obj) {
       if (!obj.error) {
-        setimgPrev(obj.image); 
+        setimgPrev(obj.image);
       }
     });
   }
@@ -58,6 +58,8 @@ export default function Converter () {
 
   return (
     <div className="container py-5">
+
+      <h3 className="title mb-3"><i className="fas fa-file-image"></i> Images Converter</h3>
 
       <InputFile handleFile={handleFile} multiple="multiple" />
 

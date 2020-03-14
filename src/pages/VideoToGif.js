@@ -59,6 +59,8 @@ export default function VideoToGif () {
   return (
     <div className="container py-5">
 
+      <h3 className="title mb-3"><i className="fas fa-file-video"></i> Video Converter</h3>
+
       <div className="form-group mb-3">
         <input type="text" className="form-control" placeholder="Enter an url or drop file.." onChange={urlChange} />
         <small className="form-text text-muted">Example: {testURL}</small>
@@ -78,17 +80,17 @@ export default function VideoToGif () {
 
       <div className="row mb-5">
         <div className="col-md-6">
-
           <video src={vid} className="img-fluid" controls></video>
         </div>
 
         <div className="col-md-6 mb-3">
 
           <div className="h-100 dash-border d-flex justify-content-center align-items-center mb-3">
-            {imgPrev ? <img src={imgPrev} alt="placeholder" className="img-fluid"
-              width={settings.gifWidth}
-              height={settings.gifHeight}
-            /> : <h3 className="text-muted">Gif output will be here</h3>}
+            {imgPrev
+              ? <img src={imgPrev} alt="placeholder" className="img-fluid"
+                width={settings.gifWidth}
+                height={settings.gifHeight} />
+              : <h3 className="text-muted">Gif output will be here</h3>}
 
           </div>
 

@@ -17,12 +17,19 @@ video {
   width: 100%;
 }
 
+canvas {width: 100%;}
+
 label,
 .btn,
 .navbar-brand,.nav-link {
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
+}
+
+.title {
+  font-size: 20px;
+  color: #9E9E9E;
 }
 
 .dash-border {

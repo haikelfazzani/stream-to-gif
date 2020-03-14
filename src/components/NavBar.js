@@ -22,8 +22,9 @@ function NavBar () {
 
         <ul className="navbar-nav">
           <li className="nav-item"><Link className="nav-link" to="/"><i className="fas fa-home"></i> home</Link></li>
-          <li className="nav-item"><Link className="nav-link" to="/videos">video converter</Link></li>
-          <li className="nav-item"><Link className="nav-link" to="/images">images converter</Link></li>
+          <li className="nav-item"><Link className="nav-link" to="/videos-converter">video converter</Link></li>
+          <li className="nav-item"><Link className="nav-link" to="/images-converter">images converter</Link></li>
+          <li className="nav-item"><Link className="nav-link" to="/capture-image">capture image</Link></li>
         </ul>
 
       </div>
