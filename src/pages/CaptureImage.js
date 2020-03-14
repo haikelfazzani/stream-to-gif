@@ -3,16 +3,25 @@ import React, { useState, useRef } from 'react';
 import InputFile from '../components/InputFile';
 
 const testURL = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+const vidTypes = ['mp4', 'webm', 'ogg'];
 
 export default function CaptureImage () {
 
   const [state, setState] = useState({ video: testURL, capturedImg: null });
+  const [disableBtnConvert, setDisableBtnConvert] = useState(false);
 
   const canvasRef = useRef();
   const videoRef = useRef();
 
-  const handleFile = (e) => {
-    setState({ ...state, video: window.URL.createObjectURL(e.target.files[0]) });
+  const handleFile = (e) => {    
+
+    let vidFile = e.target.files[0];
+    let result = vidTypes.some(v => ('video/' + v) === vidFile.type);
+    if (result) { 
+      setState({ ...state, video: window.URL.createObjectURL(vidFile) });
+      setDisableBtnConvert(false);
+    }
+    else { setDisableBtnConvert(true); }
   }
 
   const capture = () => {
@@ -40,7 +49,7 @@ export default function CaptureImage () {
       <div className="col-md-6">
         <div className="frame-input">
           <video ref={videoRef} src={state.video} className="img-fluid" crossOrigin="anonymous" controls></video>
-          <button className="btn btn-light btn-lg btn-download" onClick={capture}>
+          <button className="btn btn-light btn-lg btn-download" onClick={capture} disabled={disableBtnConvert}>
             <i className="fas fa-camera"></i>
           </button>
         </div>

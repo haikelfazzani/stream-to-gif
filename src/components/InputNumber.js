@@ -40,7 +40,8 @@ function InputNumber ({ settings, setSettings, val, label, defaultValue }) {
 
       <input type="number"
         onChange={handleChange}
-        className="form-control w-100" placeholder="Enter gif image width"
+        className="form-control w-100" 
+        min="0"
         defaultValue={defaultValue}
       />
 

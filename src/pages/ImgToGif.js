@@ -6,6 +6,8 @@ import ConvertSettings from '../containers/ConvertSettings';
 import Doc from '../components/Doc';
 import Image from '../components/Image';
 
+const imgTypes  = ['image/gif', 'image/png', 'image/jpg', 'image/jpeg', 'image/bmp', 'image/webp', 'image/tiff', 'image/tif', 'image/apng', 'image/ico'];
+
 export default function Converter () {
 
   const [userImages, setUserImages] = useState([
@@ -16,10 +18,18 @@ export default function Converter () {
   const [imgPrev, setimgPrev] = useState("");
   const [widthProg, setWidthProg] = useState('0%');
   const [settings, setSettings] = useState({})
+  const [disableBtnConvert, setDisableBtnConvert] = useState(false);
 
   const handleFile = (e) => {
-    let files = Object.values(e.target.files).map(file => window.URL.createObjectURL(file));
-    setUserImages(files);
+
+    let imgFiles = Object.values(e.target.files).filter(o => imgTypes.includes(o.type));
+
+    if(imgFiles.length > 0) { 
+      let imgUrls = imgFiles.map(file => window.URL.createObjectURL(file));
+      setUserImages(imgUrls); 
+      setDisableBtnConvert(false);
+    }
+    else { setDisableBtnConvert(true); }
   }
 
   const convertGif = () => {
@@ -71,7 +81,7 @@ export default function Converter () {
       <div className="w-100 box-shad p-20 mb-5">
         <ConvertSettings getSettings={getSettings} />
 
-        <button onClick={convertGif} className="btn btn-primary w-100 btn-lg mb-3">
+        <button onClick={convertGif} className="btn btn-primary w-100 btn-lg mb-3" disabled={disableBtnConvert}>
           <i className="fas fa-cogs"></i> convert images to gif
         </button>
 

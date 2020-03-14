@@ -6,16 +6,24 @@ import ConvertSettings from '../containers/ConvertSettings';
 import Doc from '../components/Doc';
 
 const testURL = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+const vidTypes = ['mp4', 'webm', 'ogg'];
 
 export default function VideoToGif () {
 
   const [vid, setVid] = useState(testURL)
   const [imgPrev, setimgPrev] = useState("");
   const [widthProg, setWidthProg] = useState('0%');
-  const [settings, setSettings] = useState({})
+  const [settings, setSettings] = useState({});
+  const [disableBtnConvert, setDisableBtnConvert] = useState(false);
 
   const handleFile = (e) => {
-    setVid(window.URL.createObjectURL(e.target.files[0]));
+    let vidFile = e.target.files[0];
+    let result = vidTypes.some(v => ('video/' + v) === vidFile.type);
+    if (result) { 
+      setVid(window.URL.createObjectURL(vidFile)); 
+      setDisableBtnConvert(false);
+    }
+    else { setDisableBtnConvert(true); }
   }
 
   const convertGif = () => {
@@ -38,7 +46,10 @@ export default function VideoToGif () {
   }
 
   const urlChange = (e) => {
-    setVid(e.target.value);
+    let vidFile = e.target.value.trim();
+    let extension = vidFile.split('.').pop().toLowerCase();
+    if (vidTypes.includes(extension)) { setVid(vidFile); }
+    else { setDisableBtnConvert(true); }
   }
 
   const progressCallback = (captureProgress) => {
@@ -71,7 +82,7 @@ export default function VideoToGif () {
       <div className="w-100 box-shad p-20 mb-5">
         <ConvertSettings getSettings={getSettings} />
 
-        <button onClick={convertGif} className="btn btn-primary w-100 btn-lg mb-3">
+        <button onClick={convertGif} className="btn btn-primary w-100 btn-lg mb-3" disabled={disableBtnConvert}>
           <i className="fas fa-cogs"></i> convert video to gif
         </button>
 
@@ -95,7 +106,7 @@ export default function VideoToGif () {
             {widthProg === '200%' &&
               <a href={imgPrev} className="btn btn-light btn-lg btn-download" download>
                 <i className="fas fa-download"></i>
-            </a>}
+              </a>}
           </div>
 
         </div>
