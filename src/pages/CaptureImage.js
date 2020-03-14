@@ -38,25 +38,26 @@ export default function CaptureImage () {
 
     <div className="row">
       <div className="col-md-6">
-        <video ref={videoRef} src={state.video} className="img-fluid" crossOrigin="anonymous" controls></video>
+        <div className="frame-input">
+          <video ref={videoRef} src={state.video} className="img-fluid" crossOrigin="anonymous" controls></video>
+          <button className="btn btn-light btn-lg btn-download" onClick={capture}>
+            <i className="fas fa-camera"></i>
+          </button>
+        </div>
       </div>
 
       <div className="col-md-6 mb-3">
 
-        <div className="h-100 dash-border d-flex justify-content-center align-items-center mb-3">
+        <div className="frame-output h-100 dash-border d-flex justify-content-center align-items-center mb-3">
           <canvas ref={canvasRef}></canvas>
+
+          {state.capturedImg && <a href={state.capturedImg}
+            className="btn btn-light btn-lg btn-download"
+            download="streamgif.png"><i className="fas fa-download"></i></a>}
         </div>
 
       </div>
     </div>
-
-    <button className="btn btn-primary btn-lg mr-2" onClick={capture}>
-      <i className="fas fa-camera"></i> Capture
-    </button>
-
-    {state.capturedImg && <a href={state.capturedImg} 
-    className="btn btn-success btn-lg" 
-    download="streamgif.png"><i className="fas fa-download"></i> Download</a>}
 
   </div>);
 }

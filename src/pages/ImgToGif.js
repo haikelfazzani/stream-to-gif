@@ -56,6 +56,11 @@ export default function Converter () {
     setSettings(userSettings);
   }
 
+  const onRmImg = (imgIdx) => {
+    let filtredImgs = userImages.filter((img, idx) => idx !== imgIdx);
+    setUserImages(filtredImgs);
+  }
+
   return (
     <div className="container py-5">
 
@@ -78,24 +83,27 @@ export default function Converter () {
           <div className="row">
             {userImages && userImages.map((img, i) => <div key={'img' + i} className="col-md-4">
               <Image src={img} />
+              <button className="btn btn-light btn-download" onClick={() => { onRmImg(i) }}>
+                <i className="fas fa-trash-alt"></i>
+              </button>
             </div>)}
           </div>
         </div>
 
         <div className="col-md-6 mb-3">
 
-          <div className="h-100 dash-border d-flex justify-content-center align-items-center mb-3">
-            {imgPrev ? <img src={imgPrev} alt="placeholder" className="img-fluid"
-              width={settings.gifWidth}
-              height={settings.gifHeight}
-            /> : <h3 className="text-muted">Gif output will be here</h3>}
+          <div className="frame-output h-100 dash-border d-flex justify-content-center align-items-center mb-3">
+            {imgPrev
+              ? <img src={imgPrev} alt="placeholder" className="img-fluid w-100"
+                width={settings.gifWidth}
+                height={settings.gifHeight} />
+              : <h3 className="text-muted">Gif output will be here</h3>}
 
+            {widthProg === '100%' &&
+              <a href={imgPrev} className="btn btn-light btn-lg btn-download" download>
+                <i className="fas fa-download"></i>
+              </a>}
           </div>
-
-          {widthProg === '100%' &&
-            <a href={imgPrev} className="btn btn-success btn-lg" download>
-              <i className="fas fa-download"></i> Download
-            </a>}
 
         </div>
       </div>

@@ -27,6 +27,14 @@ label,
   text-transform: uppercase;
 }
 
+.frame-output, .frame-input {position: relative;}
+.btn-download { position: absolute; top: 20px; left: 20px; 
+  background-color: #f8f9fa6b !important;
+    border-color: #f8f9fa62 !important;
+}
+
+.btn-download:hover { background-color: #f8f9fa !important; border-color: #f8f9fa !important;}
+
 .title {
   font-size: 20px;
   color: #9E9E9E;

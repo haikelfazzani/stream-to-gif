@@ -85,19 +85,18 @@ export default function VideoToGif () {
 
         <div className="col-md-6 mb-3">
 
-          <div className="h-100 dash-border d-flex justify-content-center align-items-center mb-3">
+          <div className="frame-output h-100 dash-border d-flex justify-content-center align-items-center mb-3">
             {imgPrev
               ? <img src={imgPrev} alt="placeholder" className="img-fluid"
                 width={settings.gifWidth}
                 height={settings.gifHeight} />
               : <h3 className="text-muted">Gif output will be here</h3>}
 
-          </div>
-
-          {widthProg === '200%' &&
-            <a href={imgPrev} className="btn btn-success btn-lg" download>
-              <i className="fas fa-download"></i> Download
+            {widthProg === '200%' &&
+              <a href={imgPrev} className="btn btn-light btn-lg btn-download" download>
+                <i className="fas fa-download"></i>
             </a>}
+          </div>
 
         </div>
       </div>
