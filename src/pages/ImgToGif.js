@@ -5,6 +5,7 @@ import ProgressBar from '../components/ProgressBar';
 import ConvertSettings from '../containers/ConvertSettings';
 import Doc from '../components/Doc';
 import Image from '../components/Image';
+import ImgModal from '../components/ImgModal';
 
 const imgTypes  = ['image/gif', 'image/png', 'image/jpg', 'image/jpeg', 'image/bmp', 'image/webp', 'image/tiff', 'image/tif', 'image/apng', 'image/ico'];
 
@@ -19,6 +20,7 @@ export default function Converter () {
   const [widthProg, setWidthProg] = useState('0%');
   const [settings, setSettings] = useState({})
   const [disableBtnConvert, setDisableBtnConvert] = useState(false);
+  const [isImgModalOpen, setIsImgModalOpen] = useState(false);
 
   const handleFile = (e) => {
 
@@ -71,6 +73,8 @@ export default function Converter () {
     setUserImages(filtredImgs);
   }
 
+  const openImgModal = () => { setIsImgModalOpen(true) }
+
   return (
     <div className="container py-5">
 
@@ -106,7 +110,8 @@ export default function Converter () {
             {imgPrev
               ? <img src={imgPrev} alt="placeholder" className="img-fluid w-100"
                 width={settings.gifWidth}
-                height={settings.gifHeight} />
+                height={settings.gifHeight} 
+                onClick={openImgModal} />
               : <h3 className="text-muted">Gif output will be here</h3>}
 
             {widthProg === '100%' &&
@@ -119,6 +124,13 @@ export default function Converter () {
       </div>
 
       <Doc />
+
+      {imgPrev
+        && <ImgModal
+          url={imgPrev}
+          show={isImgModalOpen}
+          setShow={setIsImgModalOpen}
+        />}
     </div>
   )
 }

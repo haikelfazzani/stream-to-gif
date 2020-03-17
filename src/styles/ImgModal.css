@@ -1,0 +1,35 @@
+.img-modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.911);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-modal img {
+  max-width: 60%;
+  border-radius: 5px;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+@media screen and (max-width: 1140px) {
+  .img-modal img {
+    max-width: 80%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .img-modal img {
+    max-width: 90%;
+  }
+}

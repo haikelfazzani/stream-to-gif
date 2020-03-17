@@ -17,7 +17,7 @@ video {
   width: 100%;
 }
 
-canvas {width: 100%;}
+canvas {width: 100%; cursor: pointer;}
 
 label,
 .btn,
@@ -27,7 +27,7 @@ label,
   text-transform: uppercase;
 }
 
-.frame-output, .frame-input {position: relative;}
+.frame-output, .frame-input {position: relative; cursor: pointer;}
 .btn-download { position: absolute; top: 20px; left: 20px; 
   background-color: #f8f9fa6b !important;
     border-color: #f8f9fa62 !important;

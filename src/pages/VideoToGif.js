@@ -4,6 +4,7 @@ import InputFile from '../components/InputFile';
 import ProgressBar from '../components/ProgressBar';
 import ConvertSettings from '../containers/ConvertSettings';
 import Doc from '../components/Doc';
+import ImgModal from '../components/ImgModal';
 
 const testURL = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
 const vidTypes = ['mp4', 'webm', 'ogg'];
@@ -15,12 +16,13 @@ export default function VideoToGif () {
   const [widthProg, setWidthProg] = useState('0%');
   const [settings, setSettings] = useState({});
   const [disableBtnConvert, setDisableBtnConvert] = useState(false);
+  const [isImgModalOpen, setIsImgModalOpen] = useState(false);
 
   const handleFile = (e) => {
     let vidFile = e.target.files[0];
     let result = vidTypes.some(v => ('video/' + v) === vidFile.type);
-    if (result) { 
-      setVid(window.URL.createObjectURL(vidFile)); 
+    if (result) {
+      setVid(window.URL.createObjectURL(vidFile));
       setDisableBtnConvert(false);
     }
     else { setDisableBtnConvert(true); }
@@ -48,8 +50,8 @@ export default function VideoToGif () {
   const urlChange = (e) => {
     let vidFile = e.target.value.trim();
     let extension = vidFile.split('.').pop().toLowerCase();
-    if (vidTypes.includes(extension)) { 
-      setVid(vidFile); 
+    if (vidTypes.includes(extension)) {
+      setVid(vidFile);
       setDisableBtnConvert(false);
     }
     else { setDisableBtnConvert(true); }
@@ -58,7 +60,7 @@ export default function VideoToGif () {
   const progressCallback = (captureProgress) => {
     setWidthProg((captureProgress * 100) + '%');
     if (captureProgress === 1) {
-      setTimeout(() => { setWidthProg(200 + '%'); }, 3000);
+      setTimeout(() => { setWidthProg(200 + '%'); }, 5000);
     }
   }
 
@@ -69,6 +71,8 @@ export default function VideoToGif () {
   const getSettings = (userSettings) => {
     setSettings(userSettings);
   }
+
+  const openImgModal = () => { setIsImgModalOpen(true) }
 
   return (
     <div className="container py-5">
@@ -103,7 +107,8 @@ export default function VideoToGif () {
             {imgPrev
               ? <img src={imgPrev} alt="placeholder" className="img-fluid"
                 width={settings.gifWidth}
-                height={settings.gifHeight} />
+                height={settings.gifHeight}
+                onClick={openImgModal} />
               : <h3 className="text-muted">Gif output will be here</h3>}
 
             {widthProg === '200%' &&
@@ -113,9 +118,16 @@ export default function VideoToGif () {
           </div>
 
         </div>
-      </div>
+      </div>      
 
       <Doc />
+
+      {imgPrev
+        && <ImgModal
+          url={imgPrev}
+          show={isImgModalOpen}
+          setShow={setIsImgModalOpen}
+        />}
     </div>
   )
 }

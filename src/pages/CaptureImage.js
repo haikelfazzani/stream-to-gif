@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 
 import InputFile from '../components/InputFile';
+import ImgModal from '../components/ImgModal';
 
 const testURL = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
 const vidTypes = ['mp4', 'webm', 'ogg'];
@@ -9,15 +10,16 @@ export default function CaptureImage () {
 
   const [state, setState] = useState({ video: testURL, capturedImg: null });
   const [disableBtnConvert, setDisableBtnConvert] = useState(false);
+  const [isImgModalOpen, setIsImgModalOpen] = useState(false);
 
   const canvasRef = useRef();
   const videoRef = useRef();
 
-  const handleFile = (e) => {    
+  const handleFile = (e) => {
 
     let vidFile = e.target.files[0];
     let result = vidTypes.some(v => ('video/' + v) === vidFile.type);
-    if (result) { 
+    if (result) {
       setState({ ...state, video: window.URL.createObjectURL(vidFile) });
       setDisableBtnConvert(false);
     }
@@ -39,6 +41,8 @@ export default function CaptureImage () {
     //setState({...state, capturedImg: canvasRef.current.toDataURL("image/png")})    
   }
 
+  const openImgModal = () => { setIsImgModalOpen(true) }
+
   return (<div className="container py-5">
 
     <h3 className="title mb-3"><i className="fas fa-camera"></i> Capture Image From Video</h3>
@@ -58,7 +62,7 @@ export default function CaptureImage () {
       <div className="col-md-6 mb-3">
 
         <div className="frame-output h-100 dash-border d-flex justify-content-center align-items-center mb-3">
-          <canvas ref={canvasRef}></canvas>
+          <canvas ref={canvasRef} onClick={openImgModal}></canvas>
 
           {state.capturedImg && <a href={state.capturedImg}
             className="btn btn-light btn-lg btn-download"
@@ -67,6 +71,13 @@ export default function CaptureImage () {
 
       </div>
     </div>
+
+    {state.capturedImg
+      && <ImgModal
+        url={state.capturedImg}
+        show={isImgModalOpen}
+        setShow={setIsImgModalOpen}
+      />}
 
   </div>);
 }
